@@ -1,0 +1,15 @@
+{
+  "name": "decorator-demo",
+  "version": "0.0.1",
+  "description": "decorator",
+  "main": "index.js",
+  "author": "vincenteof",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  },
+  "scripts": {
+    "start": "tsc src/index.ts"
+  }
+}

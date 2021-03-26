@@ -1,15 +1,13 @@
-function logged(
-  target: any,
-  propertyKey: string,
-  descriptor: PropertyDescriptor
-): any {
-  console.log('target: ', target)
-  console.log('propertyKey: ', propertyKey)
-  console.log('descriptor: ', descriptor)
-  return function (arg: string) {
-    return target.call(this, [arg])
+function logged(target: any, propertyKey: string): any {
+  return function (this: any, arg: string) {
+    console.log(`before ${propertyKey} called`)
+    const ret = target.call(this, [arg])
+    console.log(`after ${propertyKey} called`)
+    return ret
   }
 }
+
+function immutable(target: any, pk: string, descriptor: PropertyDescriptor) {}
 
 class C {
   @logged

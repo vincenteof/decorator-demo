@@ -8,7 +8,6 @@ function required(
 ) {
   let existingRequiredParameters: number[] =
     Reflect.getOwnMetadata(requiredMetadataKey, target, propertyKey) || []
-  console.log('existingRequiredParameters: ', existingRequiredParameters)
   existingRequiredParameters.push(parameterIndex)
   Reflect.defineMetadata(
     requiredMetadataKey,
@@ -31,7 +30,6 @@ function validate(
       target,
       propertyName
     )
-    console.log('requiredParameters: ', requiredParameters)
     if (requiredParameters) {
       for (let parameterIndex of requiredParameters) {
         if (
@@ -65,6 +63,6 @@ class BugReport {
 }
 
 export default function run() {
-  const br: any = new BugReport('my report')
-  br.print()
+  // const br: any = new BugReport('my report')
+  // br.print()
 }

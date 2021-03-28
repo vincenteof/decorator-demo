@@ -7,15 +7,27 @@ function logged(target: any, propertyKey: string): any {
   }
 }
 
-function immutable(target: any, pk: string, descriptor: PropertyDescriptor) {}
+function readonly(target: any, pk: string, descriptor: PropertyDescriptor) {
+  descriptor.writable = false
+  return descriptor
+}
 
 class C {
   @logged
   f(arg: string) {
     console.log(`receive ${arg}`)
   }
+  @readonly
+  g() {
+    console.log('g method')
+  }
 }
 
 export default function run() {
-  new C().f('btc')
+  // const c = new C()
+  // c.f('btc')
+  // c.g = () => {
+  //   console.log('new g method')
+  // }
+  // c.g()
 }
